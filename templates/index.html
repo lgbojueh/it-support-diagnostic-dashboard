@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Interactive IT support system and network diagnostic dashboard."
+  >
+
+  <title>IT Support Diagnostic Dashboard</title>
+
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='styles.css') }}"
+  >
+</head>
+
+<body>
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">IT SUPPORT TOOLKIT</p>
+      <h1>System Diagnostic Dashboard</h1>
+      <p class="intro">
+        Monitor system resources, test network connectivity,
+        and identify common support issues.
+      </p>
+    </div>
+
+    <button id="refresh-button" type="button">
+      Run Diagnostics
+    </button>
+  </header>
+
+  <main>
+    <section class="status-panel" aria-live="polite">
+      <div class="status-indicator" id="status-indicator"></div>
+
+      <div>
+        <span class="label">System status</span>
+        <strong id="overall-status">Waiting for diagnostics</strong>
+      </div>
+
+      <span id="last-updated">Not yet updated</span>
+    </section>
+
+    <section class="metrics-grid" aria-label="System resources">
+      <article class="metric-card">
+        <span class="metric-icon">CPU</span>
+        <p>Processor Usage</p>
+        <strong id="cpu-usage">--%</strong>
+
+        <div class="progress-track">
+          <div id="cpu-progress" class="progress-value"></div>
+        </div>
+      </article>
+
+      <article class="metric-card">
+        <span class="metric-icon">RAM</span>
+        <p>Memory Usage</p>
+        <strong id="memory-usage">--%</strong>
+
+        <div class="progress-track">
+          <div id="memory-progress" class="progress-value"></div>
+        </div>
+      </article>
+
+      <article class="metric-card">
+        <span class="metric-icon">SSD</span>
+        <p>Disk Usage</p>
+        <strong id="disk-usage">--%</strong>
+
+        <div class="progress-track">
+          <div id="disk-progress" class="progress-value"></div>
+        </div>
+      </article>
+
+      <article class="metric-card">
+        <span class="metric-icon">NET</span>
+        <p>Internet Connection</p>
+        <strong id="network-status">Unknown</strong>
+      </article>
+    </section>
+
+    <section class="details-grid">
+      <article class="panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">DEVICE</p>
+            <h2>System Information</h2>
+          </div>
+        </div>
+
+        <dl class="detail-list">
+          <div>
+            <dt>Operating system</dt>
+            <dd id="operating-system">--</dd>
+          </div>
+
+          <div>
+            <dt>Architecture</dt>
+            <dd id="architecture">--</dd>
+          </div>
+
+          <div>
+            <dt>CPU cores</dt>
+            <dd id="cpu-cores">--</dd>
+          </div>
+
+          <div>
+            <dt>Total memory</dt>
+            <dd id="total-memory">--</dd>
+          </div>
+
+          <div>
+            <dt>Available memory</dt>
+            <dd id="available-memory">--</dd>
+          </div>
+
+          <div>
+            <dt>Free disk space</dt>
+            <dd id="free-disk">--</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">NETWORK</p>
+            <h2>Connection Details</h2>
+          </div>
+        </div>
+
+        <dl class="detail-list">
+          <div>
+            <dt>Hostname</dt>
+            <dd id="hostname">--</dd>
+          </div>
+
+          <div>
+            <dt>Local IP address</dt>
+            <dd id="local-ip">--</dd>
+          </div>
+
+          <div>
+            <dt>Connectivity</dt>
+            <dd id="connectivity">--</dd>
+          </div>
+        </dl>
+      </article>
+    </section>
+
+    <section class="panel diagnostic-panel">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">ANALYSIS</p>
+          <h2>Diagnostic Results</h2>
+        </div>
+      </div>
+
+      <div id="diagnostic-results" class="diagnostic-results">
+        <p class="empty-message">
+          Select “Run Diagnostics” to analyze this computer.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Built by Lyoneh Gbojueh · Python, Flask, JavaScript and REST APIs
+  </footer>
+
+  <script
+    src="{{ url_for('static', filename='app.js') }}"
+    defer
+  ></script>
+</body>
+</html>
